@@ -1,7 +1,8 @@
 import 'package:hive_flutter/adapters.dart';
+//Hive implementation class
 
 class DataBase {
-// add data to the HiveBox
+//Method  add data to the HiveBox
   String? addTask({
     required String description,
   }) {
@@ -21,7 +22,7 @@ class DataBase {
       return e.toString();
     }
   }
-  //Get lenght of item in the Box
+  //Method to Get lenght of item in the Box
 
   int? boxLenght() {
     try {
@@ -32,7 +33,7 @@ class DataBase {
     }
   }
 
-  //Get item in a particular index
+  //Method to Get item in a particular index
   Map? getData({required int index}) {
     try {
       var value = Hive.box('mytodo');
@@ -42,7 +43,7 @@ class DataBase {
     }
   }
 
-// Delete item at a particular index
+// Method to Delete item at a particular index
   String? deleteData({required int index}) {
     try {
       var deleteData = Hive.box('mytodo');

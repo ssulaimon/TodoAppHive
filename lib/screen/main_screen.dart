@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:todo/models/hive_calss.dart';
 
@@ -49,7 +50,9 @@ class _MainScreenState extends State<MainScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                setState(() {});
+                setState(() {
+                  Fluttertoast.showToast(msg: 'refreshed');
+                });
               },
               icon: const Icon(
                 Icons.replay_outlined,
@@ -71,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                   child: Column(
                     children: [
                       Text(
-                        stored?['description'],
+                        stored!['description'],
                         style: const TextStyle(fontSize: 19.0),
                       ),
                       Center(
@@ -81,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
                             setState(() {
                               String? taskResult =
                                   DataBase().deleteData(index: index);
-                              log(taskResult!);
+                              Fluttertoast.showToast(msg: taskResult!);
                             });
                           },
                         ),
@@ -111,13 +114,13 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   flex: 1,
                   child: FlatButton(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
                     onPressed: () {
                       setState(() {
                         String? taskResult =
                             DataBase().addTask(description: _describtion.text);
 
-                        log(taskResult!);
+                        Fluttertoast.showToast(msg: taskResult!);
                       });
                     },
                     color: Colors.yellow,

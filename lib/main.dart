@@ -8,6 +8,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('mytodo');
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: mainScreen,
     routes: {
       mainScreen: (context) => const MainScreen(),
