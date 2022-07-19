@@ -3,18 +3,20 @@ import 'package:hive_flutter/adapters.dart';
 class DataBase {
 // add data to the HiveBox
   String? addTask({
-    required String title,
     required String description,
   }) {
     try {
       var box = Hive.box(
         'mytodo',
       );
-      box.add({
-        'title': title,
-        'describtion': description,
-      });
-      return 'Task added';
+      if (description == '') {
+        return 'error';
+      } else {
+        box.add({
+          'description': description,
+        });
+        return 'Task added';
+      }
     } catch (e) {
       return e.toString();
     }

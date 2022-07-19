@@ -9,6 +9,8 @@ void main() async {
   await Hive.openBox('mytodo');
   runApp(MaterialApp(
     initialRoute: mainScreen,
-    routes: {mainScreen: (context) => const MainScreen()},
+    routes: {
+      mainScreen: (context) => const MainScreen(),
+    },
   ));
 }
